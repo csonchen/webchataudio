@@ -24,6 +24,12 @@
 		Plugin.prototype = {
 			init: function() {
 				var self = this;
+				var it = setInterval(function() {
+					var updateTime = self.updateTotalTime();
+					if (updateTime !== '00:00') {
+						clearInterval(it);
+					}
+				}, 100);
 				self.updateTotalTime();
 				self.events();
 				// 设置src
@@ -118,6 +124,7 @@
 					seconds = self.getAudioSeconds(time),
 					audioTime = minutes + ":" + seconds;
 				self.$audio_length.text(audioTime);
+				return audioTime;
 			},
 			//改变音频源
 			changeSrc:function(src,callback){
