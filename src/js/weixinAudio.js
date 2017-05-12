@@ -30,7 +30,6 @@
 						clearInterval(it);
 					}
 				}, 100);
-				self.updateTotalTime();
 				self.events();
 				// 设置src
 				if(self.settings.src !== ''){
